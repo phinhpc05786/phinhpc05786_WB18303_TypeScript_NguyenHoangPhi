@@ -2,7 +2,7 @@ var _a;
 (_a = document.getElementById("btn")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
     var nameInput = document.querySelector("#name");
     var help = document.querySelector("#help");
-    var nameUser = document.querySelector("#nameUser");
+    var nameUser = document.querySelector(".nameUser");
     if (nameInput && help && nameUser) {
         var name_1 = nameInput.value;
         if (name_1.trim() === "") {
@@ -23,15 +23,12 @@ var _a;
     }
 });
 function changeColor(element) {
-    // Đặt màu nền của phần tử đã nhấp vào thành 'black'
     element.style.backgroundColor = 'black';
-    // Xóa class 'selected' khỏi tất cả các phần tử có class 'selected'
     var selectedElements = document.querySelectorAll('.selected');
     selectedElements.forEach(function (el) {
         if (el instanceof HTMLElement) {
             el.classList.remove('selected');
         }
     });
-    // Thêm class 'selected' cho phần tử được click
     element.classList.add('selected');
 }
