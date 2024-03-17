@@ -1,26 +1,22 @@
-const pokemons: number = 48;
+import 'core-js/features/promise';
 
-async function callApi(url: string){
-    let data: Response = await fetch(url);
-    return await data.json;
+const pokemons: number[] = Array.from({ length: 48 }, (_, index) => index + 1);
+
+async function callApi(url: string) {
+    const data: Response = await fetch(url);
+    return await data.json();
 }
-
-const APP: HTMLElement | null = document.getElementById('app');
-let html: string = "";
 
 async function fetchData() {
     let html = "";
-    for (let i = 0; i < 48; i++) {
+    for (let i = 0; i < pokemons.length; i++) {
         try {
-            const data: any = await callApi(`https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 48) + 1}`);
-            // console.log(data);
+            const data: any = await callApi(`https://pokeapi.co/api/v2/pokemon/${pokemons[i]}`);
 
             if (data.sprites && data.sprites.front_default) {
                 html += `<div class="col-3">
                     <div class="col-md-2 shadow m-1 rounded position-relative">
-                        <span class="position-absolute top-0">
-                            #${data.id}
-                        </span>
+                        <span class="position-absolute top-0">#${data.id}</span>
                         <img src="${data.sprites.front_default}" class="w-100" height="120" alt="${data.name}">
                     </div>
                 </div>`;
@@ -32,7 +28,7 @@ async function fetchData() {
         }
     }
 
-    const appElement = document.getElementById('your-app-id') as HTMLElement;
+    const appElement = document.getElementById('app') as HTMLElement;
 
     if (appElement) {
         appElement.innerHTML = html;
@@ -40,6 +36,3 @@ async function fetchData() {
 }
 
 fetchData();
-
-
-

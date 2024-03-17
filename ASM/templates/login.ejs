@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <%- include("partials/head.ejs") %>
+        <style>
+            .gameItem{
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                box-shadow: 5px 10px 10px #ddd;
+                height: 100px;
+            }
+            .unmatched{
+                background-color: red;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        
+        <main class="container">
+            <header class="row">
+                <%- include("partials/header.ejs") %>
+                
+            </header>
+            <section class="row" id="app">
+                <div class="col-6 offset-3 mt-3">
+                    <form action="/board">
+                        <div class="mb-3">
+                            <label for="" class="form-label">UserName</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="username"
+                                id="username"
+                                aria-describedby="usernameHelpId"
+                                placeholder=""
+                            />
+                            <small id="helpId" class="form-text text-muted invisible">User name must be not empty or at least 3 character</small>
+                        </div>
+                        <div class="form-group">
+                            <hr>
+                            <button type="button" id="play" class="btn btn-primary">Play game</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <footer  class="row">
+                <%- include("partials/footer.ejs") %>
+            </footer>
+        </main>
+        
+        
+        <!-- Bootstrap JavaScript Libraries -->
+        <script src="assets/frontend/user.bundle.js"></script>
+        <script src="assets/frontend/vendors-user.chunk.js"></script>
+        <%- include("partials/foot.ejs") %>
+    </body>
+</html>

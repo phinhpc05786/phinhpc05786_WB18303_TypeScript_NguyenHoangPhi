@@ -1,3 +1,4 @@
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,7 +35,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var pokemons = 48;
+Object.defineProperty(exports, "__esModule", { value: true });
+require("core-js/features/promise");
+var pokemons = Array.from({ length: 48 }, function (_, index) { return index + 1; });
 function callApi(url) {
     return __awaiter(this, void 0, void 0, function () {
         var data;
@@ -43,14 +46,12 @@ function callApi(url) {
                 case 0: return [4 /*yield*/, fetch(url)];
                 case 1:
                     data = _a.sent();
-                    return [4 /*yield*/, data.json];
+                    return [4 /*yield*/, data.json()];
                 case 2: return [2 /*return*/, _a.sent()];
             }
         });
     });
 }
-var APP = document.getElementById('app');
-var html = "";
 function fetchData() {
     return __awaiter(this, void 0, void 0, function () {
         var html, i, data, error_1, appElement;
@@ -61,16 +62,15 @@ function fetchData() {
                     i = 0;
                     _a.label = 1;
                 case 1:
-                    if (!(i < 48)) return [3 /*break*/, 6];
+                    if (!(i < pokemons.length)) return [3 /*break*/, 6];
                     _a.label = 2;
                 case 2:
                     _a.trys.push([2, 4, , 5]);
-                    return [4 /*yield*/, callApi("https://pokeapi.co/api/v2/pokemon/".concat(Math.floor(Math.random() * 48) + 1, "/"))];
+                    return [4 /*yield*/, callApi("https://pokeapi.co/api/v2/pokemon/".concat(pokemons[i]))];
                 case 3:
                     data = _a.sent();
-                    // console.log(data);
                     if (data.sprites && data.sprites.front_default) {
-                        html += "<div class=\"col-3\">\n                    <div class=\"col-md-2 shadow m-1 rounded position-relative\">\n                        <span class=\"position-absolute top-0\">\n                            #".concat(data.id, "\n                        </span>\n                        <img src=\"\" class=\"w-100\" height=\"120\" alt=\"").concat(data.name, "\">\n                    </div>\n                </div>");
+                        html += "<div class=\"col-3\">\n                    <div class=\"col-md-2 shadow m-1 rounded position-relative\">\n                        <span class=\"position-absolute top-0\">#".concat(data.id, "</span>\n                        <img src=\"").concat(data.sprites.front_default, "\" class=\"w-100\" height=\"120\" alt=\"").concat(data.name, "\">\n                    </div>\n                </div>");
                     }
                     else {
                         console.error("Missing sprites or front_default in data:", data);
@@ -84,7 +84,7 @@ function fetchData() {
                     i++;
                     return [3 /*break*/, 1];
                 case 6:
-                    appElement = document.getElementById('your-app-id');
+                    appElement = document.getElementById('app');
                     if (appElement) {
                         appElement.innerHTML = html;
                     }
@@ -93,5 +93,4 @@ function fetchData() {
         });
     });
 }
-// Gọi hàm fetchData để bắt đầu quá trình lấy dữ liệu
 fetchData();
