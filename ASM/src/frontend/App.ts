@@ -1,22 +1,22 @@
-// import { GameController } from "./controllers/GameController";
-// import { GameItem } from "./models/GameItem";
+import { GameController } from "./controllers/GameController";
+import { GameItem } from "./models/GameItem";
 // import './style.css';
-// const rootElement: HTMLElement | null = document.querySelector('#app');
+const rootElement: HTMLElement | null = document.querySelector('#app');
 
-// var gameApp: GameController | null = null;
-// if(rootElement){
-//     gameApp = new GameController([
-//         new GameItem(1,'',"1.img"),
-//         new GameItem(2,'',"2.img"),
-//         new GameItem(3,'',"3.img"),
-//         new GameItem(4,'',"1.img"),
-//         new GameItem(5,'',"1.img"),
-//         new GameItem(6,'',"1.img"),
-//         new GameItem(7,'',"1.img"),
-//         new GameItem(8,'',"1.img"),
-//         new GameItem(9,'',"1.img"),
-//         new GameItem(10,'',"1.img"),
-//     ], rootElement);
+var gameApp: GameController | null = null;
+if(rootElement){
+    gameApp = new GameController([
+        new GameItem(1,'',"1.jpg"),
+        new GameItem(2,'',"2.ipg"),
+        new GameItem(3,'',"3.jpg"),
+        new GameItem(4,'',"4.jpg"),
+        new GameItem(5,'',"5.jpg"),
+        new GameItem(6,'',"6.jpg"),
+        new GameItem(7,'',"7.jpg"),
+        new GameItem(8,'',"8.jpg"),
+        new GameItem(9,'',"9.png"),
+        new GameItem(10,'',"10.jpg"),
+    ], rootElement);
 
-//     gameApp.renderGameBoard();
-// }
+    gameApp.renderGameBoard();
+}
