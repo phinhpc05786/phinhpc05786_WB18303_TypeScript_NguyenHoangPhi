@@ -1,0 +1,1 @@
+(()=>{"use strict";let t=new class{constructor(t,s,e){this.firstName=t,this.middleInitial=s,this.lastName=e,this.fullName=`${t} ${s} ${e}`}}("phi","phong","sỉ");var s;document.body.innerHTML="Hello, "+(s=t).firstName+" "+s.lastName})();
